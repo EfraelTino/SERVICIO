@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.cl-normal {
+	width: 1200px;
+	margin: auto;
+	transition: var(--transition150);
+}
+
+@media screen and (max-width: 1400px) {
+	.cl-normal {
+		width: 900px;
+		margin: auto;
+	}
+
+
+
+}
+@media screen and (max-width: 960px) {
+	.cl-normal {
+		width: 600px;
+		margin: auto;
+	}
+}
+
+
+@media screen and (max-width: 650px) {
+	.cl-normal {
+		width: 85%;
+		margin: auto;
+	}
+}
+
+@media screen and (max-width: 360px) {
+
+	.cl-normal {
+		width: 92%;
+		margin: auto;
+	}
+}
