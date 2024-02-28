@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import { getServicios } from "../api/servicios.api.js";
 import { Link } from "react-router-dom";
-function AlLServices() {
+function AllServices() {
     const [servicio, setServicio] = useState([]);
     const [errors, setErrors] = useState(null);
-    useEffect(() => {
-        async function cargarServicio() {
-            try {
-                const response = await getServicios();
-                const data = response.data;
-                setServicio(data);
+    async function cargarServicio() {
+        try {
+            const response = await getServicios();
+            const data = response.data;
+            setServicio(data);
 
-            } catch (error) {
-                setErrors(error);
-            }
+        } catch (error) {
+            setErrors(error);
         }
+    }
+
+    // otra alternativa
+    useEffect(() => {
+
         cargarServicio();
     }, []);
     return (
@@ -42,4 +45,4 @@ function AlLServices() {
     )
 }
 
-export default AlLServices;
+export default AllServices;

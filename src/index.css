@@ -2,11 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 .cl-normal {
-	width: 1200px;
+	width: 1400px;
 	margin: auto;
 	transition: var(--transition150);
 }
-
+*{
+	font-family: "Poppins", sans-serif;
+	transition:  all 0.2s;
+  }
+  .fixed_header{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  }
+  .shadow{
+	box-shadow: 0 0 41px 0 #53545e29;
+  }.tamano-img{
+	width: 473px;
+  }
+  .none-focus:focus-visible {
+    outline: -webkit-focus-ring-color auto 0px;
+}
 @media screen and (max-width: 1400px) {
 	.cl-normal {
 		width: 900px;

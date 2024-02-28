@@ -12,3 +12,7 @@ export  const crearServicio = async (servicio) =>{
    return await axios.post(URL,servicio);
 }
 
+export const getProductos = async () =>{
+    let URL ="http://localhost:4000/api/producto/";
+    return await axios.get(URL);
+}
