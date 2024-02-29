@@ -25,6 +25,17 @@
   .none-focus:focus-visible {
     outline: -webkit-focus-ring-color auto 0px;
 }
+.big-toast{
+	width: 740px;
+}
+.toast-login{
+	width: 540px;
+}
+.Toastify__close-button {
+	width: 40px; 
+	height: 40px; 
+	font-size: 30px; 
+  }
 @media screen and (max-width: 1400px) {
 	.cl-normal {
 		width: 900px;
@@ -46,6 +57,9 @@
 	.cl-normal {
 		width: 85%;
 		margin: auto;
+	}
+	.big-toast{
+		width: 360px;
 	}
 }
 

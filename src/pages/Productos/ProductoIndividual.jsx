@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getProductoIndividual } from "../../api/productos.api";
+import { validarToken } from "../../utilidades/utils";
+import { ToastContainer, toast } from "react-toastify";
+import { Msg } from "../../components/toastCustom";
 
 
 function ProductoIndividual() {
@@ -8,6 +11,9 @@ function ProductoIndividual() {
     const [individual, setIndividual] = useState([]);
     const [precioIndividual, setPrecio] = useState([]);
     const [errors, setErrors] = useState(null);
+    const tokenExistAndStillValid = validarToken();
+    const tipo = localStorage.getItem('tipo')
+    const navigate = useNavigate();
     async function cargarProducto() {
         try {
             const response = await getProductoIndividual(categorie, subcategorie, name);
@@ -15,19 +21,40 @@ function ProductoIndividual() {
             console.log("DATA: ", data)
             const precios = JSON.parse(data[0].precios);
             console.log("PRECIOS: ", precios)
-            // Almacena los precios como un array de objetos en el estado 'precioIndividual'
             setPrecio(precios);
-
             setIndividual(data);
         } catch (error) {
             setErrors(`No se a econtrado este producto`);
         }
     }
+    const handleMensage = () => {
+        toast.error(
+            <Msg
+                text_toast={"Para poder cotizar un producto, primero debes iniciar sesión o registrarte"}
+                rout="/login"
+            />
+        );
+    }
+
     useEffect(() => {
         cargarProducto();
-    }, [categorie, subcategorie, name])
+    }, [categorie, subcategorie, name, tokenExistAndStillValid])
     return (
         <>
+            <ToastContainer
+            className='toast-login'
+                position="top-center"
+                autoClose={false}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition:Bounce
+            />
             {
                 errors ? <p>{errors}</p> : (
 
@@ -123,9 +150,15 @@ function ProductoIndividual() {
                                                 <h4 className="text-2xl text-black font-semibold">
                                                     Desde S/{individual.precio_base}.00
                                                 </h4>
-                                                <Link className="text-white px-14 py-3 bg-green font-bold text-md rounded-lg hover:bg-greenhover">
-                                                    Cotizar Producto
-                                                </Link>
+                                                {
+                                                    tipo === undefined || tipo === null ? <button onClick={handleMensage} className="text-white px-14 py-3 bg-green font-bold text-md rounded-lg hover:bg-greenhover">
+                                                        Cotizar Producto
+                                                    </button> : <Link to='/915068001' className="text-white px-14 py-3 bg-green font-bold text-md rounded-lg hover:bg-greenhover">
+                                                        Cotizar Producto
+                                                    </Link>
+                                                }
+
+
                                             </div>
                                         </div>
 

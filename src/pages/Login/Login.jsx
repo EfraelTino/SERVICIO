@@ -9,12 +9,11 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginSuccessful, setLoginSuccessful] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const response = await loginUser(email, password);
-            
             // const token =   response.data.token;
             // const  nombre=  response.data.nombre;
             // const apellido= response.data.apellido;
@@ -22,6 +21,7 @@ function Login() {
             // const email2 = response.data.email;
             const { token, nombre, apellido, email: email2, tipo } = response.data
             console.log(token)
+
             if (token) {
                 localStorage.setItem('token', token)
                 localStorage.setItem('nombre', nombre)
@@ -29,10 +29,9 @@ function Login() {
                 localStorage.setItem('email2', email2)
                 localStorage.setItem('tipo', tipo)
                 if(tipo === 1 || tipo ==='1'){
-                    // navigate('/productos');
+                    navigate(-1);
                     console.log("IRAS A Aproductos")
                 }else{
-                   
                     navigate('/dashboard');
                 }
                 setLoginSuccessful(true);
@@ -44,7 +43,6 @@ function Login() {
         } catch (error) {
             console.log(error)
             toast.error(error.response.data);
-
         }
     }
 

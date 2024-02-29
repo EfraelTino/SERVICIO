@@ -1,5 +1,5 @@
 function Filtros ({categoria}){
-    console.log("CATEGORIA EN FILTRO: ", categoria)
+    // console.log("CATEGORIA EN FILTRO: ", categoria)
     return (
         <div className="basis-1/5">
                             <h3 className="text-blaack font-bold text-3xl dark:text-white">

@@ -10,3 +10,11 @@ export const loginUser = async (email, password) =>{
     throw error;
    }
 }
+export const createUser = async (userData) =>{
+   try {
+      let URL =`${API}/usuario/crear-user`;
+      return await axios.post (URL, userData);
+   } catch (error) {
+      throw error;
+   }
+}

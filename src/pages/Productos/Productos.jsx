@@ -4,16 +4,21 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import Filtros from "../../components/Filtros";
+import { ToastContainer } from "react-toastify";
 
 function Productos() {
     const [productos, setProductos] = useState([]);
     const [categoria, setCategoria] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    console.log(localStorage.getItem('nombre'));
+    console.log(localStorage.getItem('apellido'));
+    console.log(localStorage.getItem('email2'));
+    console.log(localStorage.getItem('tipo'));
     async function cargarProductos() {
         try {
             const response = await getProductos();
             const data = response.data;
-            // console.log(response.data);
             setProductos(data);
         } catch (error) {
             console.log(error)
@@ -23,10 +28,9 @@ function Productos() {
         try {
             const res = await getCategoria()
             const data = res.data;
-            console.log("CATEGORIAS:", data)
             setCategoria(data)
         } catch (error) {
-
+            toast.error("Ocurrío un error en mostrar los filtros intenta de nuevo");
         }
     }
     useEffect(() => {
@@ -38,6 +42,7 @@ function Productos() {
     }
     return (
         <div className="dark:bg-bgdark">
+            <ToastContainer />
             <div className="cl-normal pt-10">
                 <div className="flex">
                     <h1 className="text-black font-bold text-5xl my-6 mb-10 dark:text-white">

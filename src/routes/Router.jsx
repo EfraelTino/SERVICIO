@@ -11,6 +11,7 @@ import SubCategoriaProducto from "../pages/Productos/Categorias/SubCategoriaProd
 import ProductoIndividual from "../pages/Productos/ProductoIndividual";
 import Login from "../pages/Login/Login";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import Signup from "../pages/Login/SignUp";
 
 function Router() {
     const [loading, setLoading] = useState(true);
@@ -27,7 +28,7 @@ function Router() {
                 {/* HABILITEMOS EL HOME DEL USUARIO */}
                 {/* <Route exact path="/dashboard" element={user ? <Dashboard user={user} /> : <Navigate to="/login"/>}/> */}
                 <Route exact path="/login" element={<Login />} />
-                <Route exact path="/signup" />
+                <Route exact path="/signup" element={<Signup />}/>
                 <Route path="/*" element={<NotFound />} />
                 <Route path="/" element={<Home />} />
                 <Route exact path="/productos" element={<Productos />} />
