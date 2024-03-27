@@ -6,7 +6,8 @@ import { FaMoon } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 import { FaRegCircleUser } from "react-icons/fa6";
-
+import LogoBlack from '../assets/cozechablack.webp'
+import LogoWhite from '../assets/cozechawhite.webp'
 function NavBar() {
     // console.log("Usuario:", user.user && user.user.user && user.user.user.displayName);
     const [theme, setTeheme] = useState("light");
@@ -22,16 +23,20 @@ function NavBar() {
     }, [theme])
     const handleTheme = () => {
         setTeheme(theme === "dark" ? "light" : "dark");
-    }
 
+    }
+    console.log(localStorage.getItem('tema'));
+    
     const handleMenu = () => {
         setOpen(!open)
     }
     return (
-        <header className="bg-white dark:bg-bgdark py-4 dark:bgdark ">
+        <header className="bg-white  py-4 dark:bg-bgdark shadow-md dark:shadow-light  outline-none focus:outline-none">
             <nav className="cl-normal flex flex-row justify-between items-center	">
-                <div className="logo z-10 dark:text-white font-bold text-4xl ">
-                    Cocecha
+                <div className="logo z-10 dark:text-white font-light text-sm ">
+                    {
+                        theme ==="light" ? <img src={LogoBlack} alt="Logo Cozecha" className="w-56" /> : <img src={LogoWhite} alt="Logo Cozecha" className="w-56"/> 
+                    }
                 </div>
                 <Link to="#" className="sm:hidden dark:text-white text-bgdark  flex justify-between items-cente text-2xl">
                     <FaRegCircleUser  /> 

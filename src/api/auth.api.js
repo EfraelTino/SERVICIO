@@ -1,6 +1,9 @@
 import axios from "axios";
 
+// const API = "https://backend-cozecha-1-1yme.onrender.com/api"
 const API = "http://localhost:4000/api"
+// Configuración global de axios para incluir CORS con credenciales
+axios.defaults.withCredentials = true;
 
 export const loginUser = async (email, password) =>{
    try {

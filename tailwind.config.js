@@ -21,7 +21,9 @@ export default {
       'gray200': '#dce0e5',
       'greenhover': '#089c44',
       'greenbajo': '#eafee3',
-      'bodycolor' : '#c4c5c7'
+      'bodycolor' : '#c4c5c7',
+      'red': 'red',
+      'bgcard': '#222427'
     },
     extend: {},
   },

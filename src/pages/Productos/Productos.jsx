@@ -69,11 +69,11 @@ function Productos() {
                                 </div>
                             </div>
                             <div className="row my-5 ">
-                                <div className="flex flex-row gap-4">
+                                <div className="flex flex-row gap-4 flex-wrap">
                                     {productos.map((producto) => (
                                         <div key={producto.id} className="w-1/4 p-5 flex-grow border border-gray200 rounded-lg dark:border-gray">
                                             <div className="row bg-light p-3 rounded-xl dark:bg-gray mb-3">
-                                                <img src={`http://localhost:4000/uploads/${producto.imagen}`} alt="Imagen del producto" />
+                                                <img src={producto.imagen} alt="Imagen del producto" />
                                             </div>
                                             <div className="row flex justify-start px-3">
                                                 <Link to={`/productos/${producto.nombre_cat}/${producto.nombre_subcat}/${producto.nombre}`} className="text-green font-bold text-left text-2xl dark:text-white py-2 hover:text-green dark:hover:text-green">{producto.nombre}</Link>

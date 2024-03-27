@@ -12,6 +12,7 @@ import ProductoIndividual from "../pages/Productos/ProductoIndividual";
 import Login from "../pages/Login/Login";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Signup from "../pages/Login/SignUp";
+import { AddoProduct } from "../components/AddProduct";
 
 function Router() {
     const [loading, setLoading] = useState(true);
@@ -39,6 +40,7 @@ function Router() {
 
                 <Route path="/productos/categorias/subcategorias" element={<Subcategorias />} />
                 <Route exact path ="/dashboard" element={<Dashboard/>} />
+                <Route exact path ="/dashboard/add-product" element={<AddoProduct/>} />
 
 
             </Routes>

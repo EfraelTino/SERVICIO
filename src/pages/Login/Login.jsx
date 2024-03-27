@@ -19,11 +19,14 @@ function Login() {
             // const apellido= response.data.apellido;
             // const tipo = response.data.tipo;
             // const email2 = response.data.email;
-            const { token, nombre, apellido, email: email2, tipo } = response.data
-            console.log(token)
+            console.log(response)
+            const { token, nombre, apellido, email: email2, tipo, idusuario } = response.data
+            console.log("usuario: ",idusuario)
 
             if (token) {
+
                 localStorage.setItem('token', token)
+                localStorage.setItem('id_usuario', idusuario)
                 localStorage.setItem('nombre', nombre)
                 localStorage.setItem('apellido', apellido)
                 localStorage.setItem('email2', email2)
